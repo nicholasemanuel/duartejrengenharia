@@ -86,12 +86,3 @@ Certifique-se de possuir o [Node.js](https://nodejs.org) (v18 ou superior) insta
    ```
 
 ---
-
-## ☁️ Como Fazer Upload na Hostinger
-
-1. Execute a build de produção localmente com `npm run build`.
-2. Abra a pasta gerada `dist/` na raiz do seu projeto.
-3. Compacte todo o conteúdo que está **dentro** da pasta `dist/` em um arquivo `.zip` (atenção: compacte apenas os arquivos internos, não a pasta `dist` em si).
-4. No painel de controle hPanel da Hostinger, abra o **Gerenciador de Arquivos**.
-5. Navegue até o diretório `public_html` do seu domínio.
-6. Faça o upload do arquivo `.zip` e extraia os arquivos lá dentro. O arquivo `index.html` e `contato.php` devem ficar na raiz do diretório `public_html`.
