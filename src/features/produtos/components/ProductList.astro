@@ -1,0 +1,163 @@
+---
+import type { Project } from '../types';
+import ProductCard from './ProductCard.astro';
+
+interface Props {
+  projects: Project[];
+}
+
+const { projects } = Astro.props as Props;
+
+// Coletar categorias exclusivas para os botões de filtro
+const categories = ['Todos', 'Residencial', 'Comercial', 'Industrial', 'Infraestrutura'];
+---
+
+<div class="projects-container">
+  <!-- Filtros Interativos -->
+  <div class="filters-wrapper">
+    <span class="filter-title">Filtrar por Categoria:</span>
+    <div class="filter-buttons">
+      {categories.map((category) => (
+        <button 
+          class={`filter-btn ${category === 'Todos' ? 'active' : ''}`}
+          data-filter={category}
+        >
+          {category}
+        </button>
+      ))}
+    </div>
+  </div>
+
+  <!-- Grid de Projetos -->
+  <div class="projects-grid" id="projects-grid">
+    {projects.map((project) => (
+      <div class="grid-item" data-category={project.category}>
+        <ProductCard project={project} />
+      </div>
+    ))}
+  </div>
+</div>
+
+<style>
+  .projects-container {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .filters-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .filter-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .filter-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.02);
+    padding: 0.5rem;
+    border-radius: 9999px;
+    border: 1px solid var(--border-glass);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  .filter-btn {
+    background: transparent;
+    border: none;
+    padding: 0.6rem 1.25rem;
+    border-radius: 9999px;
+    font-family: var(--font-title);
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+  }
+
+  .filter-btn:hover {
+    color: var(--text-primary);
+  }
+
+  .filter-btn.active {
+    background: var(--primary);
+    color: white;
+    box-shadow: 0 4px 15px var(--primary-glow);
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+  }
+
+  .grid-item {
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
+  }
+
+  .grid-item.fade-out {
+    opacity: 0;
+    transform: scale(0.95);
+    pointer-events: none;
+  }
+
+  /* Ajustes responsivos */
+  @media (max-width: 640px) {
+    .filter-buttons {
+      border-radius: 16px;
+      width: 100%;
+    }
+    
+    .filter-btn {
+      flex: 1 1 40%;
+      text-align: center;
+    }
+  }
+</style>
+
+<script>
+  const buttons = document.querySelectorAll('.filter-btn');
+  const items = document.querySelectorAll('.grid-item');
+
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      // 1. Atualizar botão ativo
+      buttons.forEach((b) => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const filterValue = btn.getAttribute('data-filter');
+
+      // 2. Filtragem de itens no Grid
+      items.forEach((item) => {
+        const itemCategory = item.getAttribute('data-category');
+        const htmlItem = item as HTMLElement;
+
+        if (filterValue === 'Todos' || itemCategory === filterValue) {
+          // Mostrar item
+          htmlItem.style.display = 'block';
+          // Pequeno timeout para animar a entrada
+          setTimeout(() => {
+            htmlItem.classList.remove('fade-out');
+          }, 50);
+        } else {
+          // Ocultar item com animação
+          htmlItem.classList.add('fade-out');
+          setTimeout(() => {
+            htmlItem.style.display = 'none';
+          }, 300);
+        }
+      });
+    });
+  });
+</script>

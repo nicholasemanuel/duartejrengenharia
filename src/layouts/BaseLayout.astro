@@ -1,0 +1,576 @@
+---
+import SEO from '@components/SEO.astro';
+import '@styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  type?: 'website' | 'article' | 'profile' | 'product';
+  robots?: 'index, follow' | 'noindex, nofollow';
+  jsonSchema?: string;
+}
+
+const { 
+  title, 
+  description, 
+  image, 
+  type, 
+  robots, 
+  jsonSchema
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <SEO 
+      title={title} 
+      description={description} 
+      image={image} 
+      type={type} 
+      robots={robots}
+      jsonSchema={jsonSchema}
+    />
+  </head>
+  <body>
+
+    <!-- Header -->
+    <header class="site-header" id="site-header">
+      <div class="header-inner">
+        <a href="#home" class="logo-link">
+          <img src="/logo-principal-duarte.png" alt="Duarte JR Engenharia e Construções" class="logo-img" />
+        </a>
+
+        <nav class="nav-desktop" aria-label="Navegação Principal">
+          <a href="#home">Home</a>
+          <a href="#servicos">Serviços</a>
+          <a href="#sobre">Sobre</a>
+          <a href="#contato" class="nav-cta">Fale Conosco</a>
+        </nav>
+
+        <!-- Botão mobile hamburger -->
+        <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+
+      <!-- Menu mobile overlay -->
+      <nav class="nav-mobile" id="nav-mobile" aria-label="Menu Mobile">
+        <a href="#home">Home</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#contato">Fale Conosco</a>
+      </nav>
+    </header>
+
+    <!-- Conteúdo Principal Semântico -->
+    <main id="main-content">
+      <slot />
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <!-- Topo do footer: marca + informações -->
+        <div class="footer-top">
+          <div class="footer-brand">
+            <img src="/logo-principal-duarte.png" alt="Duarte JR" class="footer-logo" />
+            <p class="footer-tagline">Construindo hoje, o futuro que você merece.</p>
+            <div class="footer-social">
+              <a href="#" aria-label="Instagram">
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+              </a>
+              <a href="#" aria-label="Facebook">
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+              </a>
+              <a href="https://wa.me/5571999999999" target="_blank" rel="noopener" aria-label="WhatsApp">
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+              </a>
+            </div>
+          </div>
+          
+          <div class="footer-nav-area">
+            <div class="footer-col">
+              <h4 class="footer-heading">Navegação</h4>
+              <ul class="footer-list">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#contato">Contato</a></li>
+              </ul>
+            </div>
+            
+            <div class="footer-col">
+              <h4 class="footer-heading">Informações</h4>
+              <ul class="footer-list footer-info-list">
+                <li>São Francisco do Conde — BA</li>
+                <li>(71) 99999-9999</li>
+                <li>contato@duartejrengenharia.com.br</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <div class="footer-bottom">
+          <p>© {new Date().getFullYear()} Duarte JR Engenharia e Construções. Todos os direitos reservados.</p>
+          <p class="footer-credits">
+            Criado e Desenvolvido por <a href="https://criade.art.br/" target="_blank" rel="noopener noreferrer">Criade Comunicação e Design</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Botão Flutuante do WhatsApp -->
+    <a href="https://wa.me/5571999999999" class="whatsapp-btn-float" target="_blank" rel="noopener noreferrer" aria-label="Fale Conosco no WhatsApp">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+    </a>
+  </body>
+</html>
+
+<style>
+  /* ── Header ──────────────────────────────── */
+  .site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    transition: background 0.35s ease, border-color 0.35s ease;
+    background: transparent;
+    border-bottom: 1px solid transparent;
+  }
+
+  .site-header.scrolled {
+    background: rgba(14, 14, 14, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom-color: var(--border);
+  }
+
+  .header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.1rem 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo-link {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-img {
+    height: 68px;
+    width: auto;
+    display: block;
+  }
+
+  /* Nav desktop */
+  .nav-desktop {
+    display: flex;
+    align-items: center;
+    gap: 2.25rem;
+  }
+
+  .nav-desktop a {
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    letter-spacing: 0.01em;
+    position: relative;
+    padding: 0.25rem 0;
+  }
+
+  .nav-desktop a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0;
+    height: 1px;
+    background: var(--text-primary);
+    transition: width 0.25s ease;
+  }
+
+  .nav-desktop a:hover {
+    color: var(--text-primary);
+  }
+
+  .nav-desktop a:hover::after {
+    width: 100%;
+  }
+
+  .nav-cta {
+    background: var(--primary) !important;
+    color: #fff !important;
+    padding: 0.5rem 1.15rem !important;
+    border-radius: 6px;
+    font-size: 0.84rem !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.01em;
+  }
+
+  .nav-cta::after {
+    display: none !important;
+  }
+
+  .nav-cta:hover {
+    background: #1266e0 !important;
+  }
+
+  /* Hamburger */
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+  }
+
+  .nav-toggle span {
+    width: 22px;
+    height: 1.5px;
+    background: var(--text-primary);
+    border-radius: 1px;
+    transition: var(--ease);
+  }
+
+  .nav-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(4px, 5px);
+  }
+  .nav-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .nav-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(4px, -5px);
+  }
+
+  /* Menu mobile overlay */
+  .nav-mobile {
+    display: none;
+    flex-direction: column;
+    padding: 1.5rem 2.5rem 2rem;
+    gap: 0.25rem;
+    background: rgba(14, 14, 14, 0.97);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-mobile.open {
+    display: flex;
+  }
+
+  .nav-mobile a {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-mobile a:last-child {
+    border-bottom: none;
+  }
+
+  .nav-mobile a:hover {
+    color: var(--text-primary);
+  }
+
+  /* ── Footer ──────────────────────────────── */
+  .site-footer {
+    background: #0a0a0a;
+    border-top: 1px solid var(--border);
+    padding: 3.5rem 2.5rem 1.5rem;
+    margin-top: auto;
+  }
+
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .footer-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 4rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 1.5rem;
+  }
+
+  .footer-brand {
+    max-width: 280px;
+    flex-shrink: 0;
+  }
+
+  .footer-logo {
+    height: 58px;
+    width: auto;
+    margin-bottom: 0.75rem;
+    display: block;
+  }
+
+  .footer-tagline {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+    margin-bottom: 1rem;
+  }
+
+  .footer-nav-area {
+    display: flex;
+    gap: 4rem;
+  }
+
+  .footer-heading {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+  }
+
+  .footer-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .footer-list a {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+  }
+
+  .footer-list a:hover {
+    color: var(--text-primary);
+  }
+
+  .footer-info-list li {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+  }
+
+  .footer-social {
+    display: flex;
+    gap: 0.6rem;
+  }
+
+  .footer-social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    transition: var(--ease);
+  }
+
+  .footer-social a:hover {
+    border-color: var(--border-strong);
+    color: var(--text-primary);
+  }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .footer-bottom p {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+  }
+
+  .footer-credits {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+  }
+
+  .footer-credits a {
+    color: var(--text-muted);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    transition: var(--ease);
+  }
+
+  .footer-credits a:hover {
+    color: var(--text-secondary);
+    border-bottom-color: var(--text-secondary);
+  }
+
+  /* ── Responsivo ─────────────────────────── */
+  @media (max-width: 992px) {
+    .nav-desktop {
+      display: none;
+    }
+
+    .nav-toggle {
+      display: flex;
+    }
+
+    .header-inner {
+      padding: 0.9rem 1.5rem;
+    }
+
+    .footer-top {
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .footer-nav-area {
+      gap: 2.5rem;
+    }
+
+    .footer-bottom {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  /* ── Botão Flutuante do WhatsApp ─────────── */
+  .whatsapp-btn-float {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 60px;
+    height: 60px;
+    background-color: #25d366;
+    color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+    z-index: 998;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.3s ease, box-shadow 0.3s ease;
+    animation: whatsapp-pulse 2s infinite;
+  }
+
+  .whatsapp-btn-float:hover {
+    background-color: #1fb855;
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+  }
+
+  .whatsapp-btn-float svg {
+    width: 28px;
+    height: 28px;
+    stroke: currentColor;
+    fill: none;
+  }
+
+  @keyframes whatsapp-pulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5);
+    }
+    70% {
+      box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .whatsapp-btn-float {
+      bottom: 1.5rem;
+      right: 1.5rem;
+      width: 52px;
+      height: 52px;
+    }
+    .whatsapp-btn-float svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+</style>
+
+<script>
+  // ── 1. Efeito de Scroll no Header ──
+  const header = document.getElementById('site-header');
+  if (header) {
+    const onScroll = () => {
+      if (window.scrollY > 45) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+
+  // ── 2. Menu Mobile ──
+  const toggle = document.getElementById('nav-toggle');
+  const mobileNav = document.getElementById('nav-mobile');
+  if (toggle && mobileNav) {
+    toggle.addEventListener('click', () => {
+      toggle.classList.toggle('active');
+      mobileNav.classList.toggle('open');
+    });
+    
+    mobileNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        toggle.classList.remove('active');
+        mobileNav.classList.remove('open');
+      });
+    });
+  }
+
+  // ── 3. Intersection Observer (Scroll Reveal) ──
+  document.addEventListener('DOMContentLoaded', () => {
+    const revealElements = document.querySelectorAll('.reveal');
+    
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          // Uma vez revelado, podemos parar de observar o elemento
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      root: null,
+      threshold: 0.15, // Revela quando 15% do elemento estiver visível
+      rootMargin: '0px 0px -40px 0px' // Margem inferior sutil para evitar trigger precoce
+    });
+    
+    revealElements.forEach(el => revealObserver.observe(el));
+  });
+
+  // ── 4. Smooth Scrolling nativo e aprimorado para links âncoras ──
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      const targetId = this.getAttribute('href');
+      if (targetId === '#') return;
+      
+      const targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        // Obter offset da altura do header para rolar na posição exata
+        const headerHeight = header ? header.offsetHeight : 0;
+        const elementPosition = targetElement.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+</script>

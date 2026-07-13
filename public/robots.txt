@@ -1,0 +1,6 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+
+# Link direto para o Sitemap gerado pela build do Astro
+Sitemap: https://duartejrengenharia.com.br/sitemap-index.xml

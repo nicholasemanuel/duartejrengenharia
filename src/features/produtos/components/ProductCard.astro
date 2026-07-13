@@ -1,0 +1,211 @@
+---
+import type { Project } from '../types';
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props as Props;
+
+// Cores dinâmicas para a tag de status
+const getStatusColor = (status: Project['status']) => {
+  switch (status) {
+    case 'Concluído':
+      return 'border: 1px solid rgba(16, 185, 129, 0.3); background: rgba(16, 185, 129, 0.1); color: #34d399;';
+    case 'Em Construção':
+      return 'border: 1px solid rgba(245, 158, 11, 0.3); background: rgba(245, 158, 11, 0.1); color: #fbbf24;';
+    case 'Em Projeto':
+      return 'border: 1px solid rgba(37, 99, 235, 0.3); background: rgba(37, 99, 235, 0.1); color: #60a5fa;';
+    default:
+      return 'border: 1px solid var(--border-glass); background: rgba(255, 255, 255, 0.05); color: var(--text-secondary);';
+  }
+};
+---
+
+<article class="card-glass project-card" data-category={project.category}>
+  <div class="card-image-wrapper">
+    <!-- Overlay com gradiente moderno -->
+    <div class="card-overlay"></div>
+    <span class="status-badge" style={getStatusColor(project.status)}>
+      {project.status}
+    </span>
+    
+    <img src={project.image} alt={project.title} class="card-img" />
+  </div>
+  
+  <div class="card-body">
+    <span class="category-tag">{project.category}</span>
+    <h3 class="project-title">{project.title}</h3>
+    <p class="project-desc">{project.description}</p>
+    
+    <div class="project-meta">
+      <div class="meta-item">
+        <span class="meta-label">Área</span>
+        <span class="meta-value">{project.area.toLocaleString('pt-BR')} m²</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Ano</span>
+        <span class="meta-value">{project.year}</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Local</span>
+        <span class="meta-value-text">{project.location.split(' - ')[0]}</span>
+      </div>
+    </div>
+    
+    <button 
+      class="btn btn-secondary card-link"
+      data-open-modal
+      data-title={project.title}
+      data-desc={project.description}
+      data-long-desc={project.longDescription}
+      data-client={project.client}
+      data-location={project.location}
+      data-area={project.area}
+      data-year={project.year}
+      data-image={project.image}
+      data-status={project.status}
+      data-category={project.category}
+      aria-label={`Ver detalhes do projeto ${project.title}`}
+    >
+      <span>Ver Detalhes do Projeto</span>
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+    </button>
+  </div>
+</article>
+
+<style>
+  .project-card {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .card-image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+  }
+
+  .card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(11, 15, 25, 0) 60%, rgba(11, 15, 25, 0.9) 100%);
+    z-index: 2;
+  }
+
+  .status-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 3;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  .card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition-smooth);
+  }
+
+  .project-card:hover .card-img {
+    transform: scale(1.05);
+  }
+
+  .card-body {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  .category-tag {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+    display: inline-block;
+  }
+
+  .project-title {
+    font-size: 1.35rem;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+  }
+
+  .project-desc {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .project-meta {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid var(--border-glass);
+    border-bottom: 1px solid var(--border-glass);
+    padding: 0.75rem 0;
+    margin-bottom: 1.5rem;
+    gap: 0.5rem;
+  }
+
+  .meta-item {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .meta-label {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .meta-value {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  .meta-value-text {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .card-link {
+    width: 100%;
+    margin-top: auto;
+    font-size: 0.85rem;
+    border-color: var(--border-glass);
+  }
+
+  .project-card:hover .card-link {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: white;
+    box-shadow: 0 4px 12px var(--primary-glow);
+  }
+</style>

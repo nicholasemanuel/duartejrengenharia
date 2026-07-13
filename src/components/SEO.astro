@@ -1,0 +1,61 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  canonicalURL?: string | URL;
+  type?: 'website' | 'article' | 'profile' | 'product';
+  robots?: 'index, follow' | 'noindex, nofollow' | 'noindex, follow';
+  jsonSchema?: string; // Para JSON-LD schema markup
+}
+
+const {
+  title = "Duarte JR Engenharia e Construções - Projetos e Execução de Obras",
+  description = "A Duarte JR Engenharia e Construções oferece soluções completas em engenharia civil, projetos estruturais, execução de obras e gerenciamento com máxima qualidade em São Francisco do Conde - BA.",
+  image = "/og-image.jpg", // Imagem padrão de fallback no public/
+  canonicalURL = new URL(Astro.url.pathname, Astro.site),
+  type = 'website',
+  robots = 'index, follow',
+  jsonSchema
+} = Astro.props as Props;
+
+// Ajuste do título para ter um sufixo consistente nas páginas secundárias
+const formattedTitle = Astro.url.pathname === '/' 
+  ? title 
+  : `${title} | Duarte JR Engenharia`;
+---
+
+<!-- Global Metadata -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="icon" type="image/png" href="/faviconduarte.png" />
+<meta name="generator" content={Astro.generator} />
+
+<!-- Canonical URL -->
+<link rel="canonical" href={canonicalURL} />
+
+<!-- Primary Meta Tags -->
+<title>{formattedTitle}</title>
+<meta name="title" content={formattedTitle} />
+<meta name="description" content={description} />
+<meta name="robots" content={robots} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content={type} />
+<meta property="og:url" content={Astro.url} />
+<meta property="og:title" content={formattedTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={new URL(image, Astro.url)} />
+<meta property="og:site_name" content="Duarte Engenharia" />
+
+<!-- Twitter / X -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={Astro.url} />
+<meta property="twitter:title" content={formattedTitle} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={new URL(image, Astro.url)} />
+
+<!-- JSON-LD Structured Data (Google Rich Snippets) -->
+{jsonSchema && (
+  <script type="application/ld+json" set:html={jsonSchema} />
+)}

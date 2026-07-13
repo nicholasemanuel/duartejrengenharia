@@ -1,0 +1,381 @@
+---
+// Componente de Modal Interativo para Ficha Técnica dos Projetos
+---
+
+<div id="project-modal" class="modal-overlay hidden" aria-hidden="true" role="dialog">
+  <div class="modal-container card-glass">
+    <!-- Botão Fechar no Canto Superior -->
+    <button id="modal-close-btn" class="close-btn" aria-label="Fechar modal">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+
+    <div class="modal-content">
+      <!-- Imagem do Projeto (Coluna Esquerda/Topo) -->
+      <div class="modal-image-wrapper">
+        <img id="modal-image" src="" alt="" />
+        <span id="modal-category" class="modal-category-badge"></span>
+      </div>
+
+      <!-- Detalhes do Projeto (Coluna Direita/Base) -->
+      <div class="modal-info-wrapper">
+        <header class="modal-header">
+          <h2 id="modal-title"></h2>
+          <span id="modal-status" class="modal-status-pill"></span>
+        </header>
+
+        <div class="modal-body">
+          <section class="modal-desc-section">
+            <h3>Detalhamento Técnico</h3>
+            <p id="modal-long-desc"></p>
+          </section>
+
+          <section class="modal-spec-section">
+            <h3>Ficha Técnica</h3>
+            <dl class="modal-specs">
+              <div>
+                <dt>Cliente</dt>
+                <dd id="modal-client"></dd>
+              </div>
+              <div>
+                <dt>Localização</dt>
+                <dd id="modal-location"></dd>
+              </div>
+              <div>
+                <dt>Área Construída</dt>
+                <dd id="modal-area"></dd>
+              </div>
+              <div>
+                <dt>Ano de Conclusão</dt>
+                <dd id="modal-year"></dd>
+              </div>
+            </dl>
+          </section>
+        </div>
+
+        <footer class="modal-footer">
+          <button id="modal-action-btn" class="btn btn-primary w-full">Solicitar Projeto Semelhante</button>
+        </footer>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(11, 15, 25, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    transition: opacity 0.3s ease;
+  }
+
+  .modal-overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+    display: none;
+  }
+
+  .modal-container {
+    max-width: 960px;
+    width: 100%;
+    max-height: 90vh;
+    padding: 0;
+    overflow-y: auto;
+    position: relative;
+    border-radius: 20px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    animation: scaleUp 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  @keyframes scaleUp {
+    0% {
+      transform: scale(0.95);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    background: rgba(18, 24, 38, 0.6);
+    border: 1px solid var(--border-glass);
+    color: var(--text-primary);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    z-index: 10;
+  }
+
+  .close-btn:hover {
+    background: var(--error);
+    border-color: var(--error);
+    color: white;
+    transform: rotate(90deg);
+  }
+
+  .modal-content {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    min-height: 500px;
+  }
+
+  .modal-image-wrapper {
+    position: relative;
+    height: 100%;
+    min-height: 350px;
+    background: #0f172a;
+    border-right: 1px solid var(--border-glass);
+  }
+
+  .modal-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .modal-category-badge {
+    position: absolute;
+    top: 1.25rem;
+    left: 1.25rem;
+    padding: 0.35rem 0.85rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background: var(--primary);
+    color: white;
+    box-shadow: 0 4px 12px var(--primary-glow);
+  }
+
+  .modal-info-wrapper {
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow-y: auto;
+  }
+
+  .modal-header {
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .modal-header h2 {
+    font-size: 1.75rem;
+    color: var(--text-primary);
+    line-height: 1.2;
+  }
+
+  .modal-status-pill {
+    align-self: flex-start;
+    padding: 0.2rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 9999px;
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+    color: var(--success);
+  }
+
+  .modal-body {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .modal-desc-section h3,
+  .modal-spec-section h3 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.75rem;
+  }
+
+  .modal-desc-section p {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  .modal-specs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+
+  .modal-specs div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .modal-specs dt {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .modal-specs dd {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  .w-full {
+    width: 100%;
+  }
+
+  /* Responsividade */
+  @media (max-width: 768px) {
+    .modal-content {
+      grid-template-columns: 1fr;
+    }
+    
+    .modal-image-wrapper {
+      height: 250px;
+      min-height: auto;
+      border-right: none;
+      border-bottom: 1px solid var(--border-glass);
+    }
+
+    .modal-info-wrapper {
+      padding: 1.5rem;
+    }
+  }
+</style>
+
+<script>
+  // Script para controle do Modal Interativo
+  const modal = document.getElementById('project-modal') as HTMLDivElement;
+  const closeBtn = document.getElementById('modal-close-btn') as HTMLButtonElement;
+  
+  // Elementos do Modal
+  const modalImg = document.getElementById('modal-image') as HTMLImageElement;
+  const modalCategory = document.getElementById('modal-category') as HTMLSpanElement;
+  const modalTitle = document.getElementById('modal-title') as HTMLHeadingElement;
+  const modalStatus = document.getElementById('modal-status') as HTMLSpanElement;
+  const modalLongDesc = document.getElementById('modal-long-desc') as HTMLParagraphElement;
+  const modalClient = document.getElementById('modal-client') as HTMLElement;
+  const modalLocation = document.getElementById('modal-location') as HTMLElement;
+  const modalArea = document.getElementById('modal-area') as HTMLElement;
+  const modalYear = document.getElementById('modal-year') as HTMLElement;
+  const modalActionBtn = document.getElementById('modal-action-btn') as HTMLButtonElement;
+
+  // Função para abrir o modal com dados
+  function openModal(data: Record<string, string>) {
+    modalImg.src = data.image;
+    modalImg.alt = data.title;
+    modalCategory.textContent = data.category;
+    modalTitle.textContent = data.title;
+    modalStatus.textContent = data.status;
+    modalLongDesc.textContent = data.longDesc;
+    modalClient.textContent = data.client;
+    modalLocation.textContent = data.location;
+    modalArea.textContent = `${Number(data.area).toLocaleString('pt-BR')} m²`;
+    modalYear.textContent = data.year;
+
+    // Configurar cores do status no modal
+    if (data.status === 'Concluído') {
+      modalStatus.style.borderColor = 'rgba(16, 185, 129, 0.2)';
+      modalStatus.style.background = 'rgba(16, 185, 129, 0.1)';
+      modalStatus.style.color = '#34d399';
+    } else if (data.status === 'Em Construção') {
+      modalStatus.style.borderColor = 'rgba(245, 158, 11, 0.2)';
+      modalStatus.style.background = 'rgba(245, 158, 11, 0.1)';
+      modalStatus.style.color = '#fbbf24';
+    } else {
+      modalStatus.style.borderColor = 'rgba(37, 99, 235, 0.2)';
+      modalStatus.style.background = 'rgba(37, 99, 235, 0.1)';
+      modalStatus.style.color = '#60a5fa';
+    }
+
+    // Exibir modal
+    modal.classList.remove('hidden');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden'; // Travar scroll do fundo
+  }
+
+  // Função para fechar o modal
+  function closeModal() {
+    modal.classList.add('hidden');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = ''; // Destravar scroll
+  }
+
+  // Event Listeners para botões do grid que abrem o modal
+  document.addEventListener('click', (e) => {
+    const target = e.target as HTMLElement;
+    const trigger = target.closest('[data-open-modal]');
+    
+    if (trigger) {
+      e.preventDefault();
+      const dataset = (trigger as HTMLElement).dataset;
+      
+      const projectData = {
+        title: dataset.title || '',
+        description: dataset.desc || '',
+        longDesc: dataset.longDesc || '',
+        client: dataset.client || '',
+        location: dataset.location || '',
+        area: dataset.area || '',
+        year: dataset.year || '',
+        image: dataset.image || '',
+        status: dataset.status || '',
+        category: dataset.category || ''
+      };
+
+      openModal(projectData);
+    }
+  });
+
+  // Fechar no clique do botão de fechar
+  closeBtn.addEventListener('click', closeModal);
+
+  // Fechar ao clicar fora do container do modal
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      closeModal();
+    }
+  });
+
+  // Fechar no botão Esc
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+      closeModal();
+    }
+  });
+
+  // Ação de solicitação rolar até contato
+  modalActionBtn.addEventListener('click', () => {
+    closeModal();
+    const contactSection = document.getElementById('contato');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+</script>
