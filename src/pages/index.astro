@@ -271,18 +271,18 @@ const structureSchema = JSON.stringify({
   <!-- 5. Contato Section (#contato) -->
   <section id="contato" class="section-light">
     <div class="container">
-      <!-- Cabeçalho da seção -->
-      <div class="contact-header reveal">
-        <span class="section-tag-light">Orçamento</span>
-        <h2>Conte-nos sobre seu projeto</h2>
-        <p class="contact-subtitle">
-          Preencha o formulário abaixo com os detalhes do que você precisa. Nossa equipe técnica retorna em até 24 horas úteis com uma proposta personalizada.
-        </p>
-      </div>
-
       <div class="contact-columns">
-        <!-- Formulário principal -->
+        <!-- Formulário principal (Contendo o cabeçalho interno para nivelar a coluna direita no topo) -->
         <div class="contact-form-area reveal reveal-delay-1">
+          <!-- Cabeçalho da seção -->
+          <div class="contact-header" style="margin-bottom: 2.5rem;">
+            <span class="section-tag-light">Orçamento</span>
+            <h2>Conte-nos sobre seu projeto</h2>
+            <p class="contact-subtitle">
+              Preencha o formulário abaixo com os detalhes do que você precisa. Nossa equipe técnica retorna em até 24 horas úteis com uma proposta personalizada.
+            </p>
+          </div>
+
           <form id="landing-contact-form">
             <!-- Honeypot anti-spam — campo invisível para bots -->
             <div aria-hidden="true" style="position: absolute; left: -9999px; top: -9999px; overflow: hidden;">
