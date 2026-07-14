@@ -41,10 +41,12 @@ if (!$nome || !$email || !$telefone || !$servico_tipo || !$mensagem) {
 
 // Mapeamento de tipos de serviço legíveis
 $servicos = [
-    'projetos' => 'Projetos (Estrutural / Complementar)',
-    'execucao' => 'Execução de Obras',
-    'consultoria' => 'Consultoria Técnica',
-    'gerenciamento' => 'Gerenciamento Completo',
+    'arquitetonico' => 'Projeto Arquitetônico',
+    'construcao' => 'Construção',
+    'reformas' => 'Reformas',
+    'acompanhamento' => 'Acompanhamento de Obras',
+    'legalizacao' => 'Legalização de Obras',
+    'laudo' => 'Laudo Pericial',
     'outro' => 'Outro'
 ];
 $servico_label = isset($servicos[$servico_tipo]) ? $servicos[$servico_tipo] : $servico_tipo;
