@@ -50,7 +50,7 @@ const PROJECTS_MOCK: Project[] = [
     description: 'Torre de escritórios moderna com pele de vidro acústica de alto desempenho térmico.',
     longDescription: 'Construção corporativa sustentável certificada. Fachada ventilada inteligente com pele de vidro que minimiza a incidência de raios UV, proporcionando redução de 25% no consumo elétrico de climatização. Projeto estrutural monolítico otimizado contra ventos fortes.',
     category: 'Comercial',
-    location: 'São Francisco do Conde - BA',
+    location: 'Conde - BA',
     client: 'Duarte Participações',
     area: 8900,
     year: 2026,

@@ -1,6 +1,6 @@
 # Duarte JR Engenharia e Construções 🏗️
 
-Landing Page institucional de alta conversão para o escritório **Duarte JR Engenharia e Construções**, sediado em São Francisco do Conde - BA. O site funciona como um cartão de visitas digital de alto padrão, focado em captação de leads, contendo design moderno, animações fluidas e otimizações locais de SEO.
+Landing Page institucional de alta conversão para o escritório **Duarte JR Engenharia e Construções**, sediado em Conde - BA. O site funciona como um cartão de visitas digital de alto padrão, focado em captação de leads, contendo design moderno, animações fluidas e otimizações locais de SEO.
 
 ---
 
@@ -33,7 +33,7 @@ Para manter o design limpo e evitar fricção no preenchimento de formulários d
 
 ### 4. 📈 Otimização SEO Local
 - **robots.txt e Sitemaps:** Integrados e atualizados na build para apontar para `https://duartejrengenharia.com.br/sitemap-index.xml`.
-- **JSON-LD:** Tags estruturadas injetadas para ranquear os serviços de engenharia civil localmente no Google em São Francisco do Conde - BA.
+- **JSON-LD:** Tags estruturadas injetadas para ranquear os serviços de engenharia civil localmente no Google em Conde - BA.
 
 ---
 
