@@ -339,7 +339,7 @@ const structureSchema = JSON.stringify({
             <ul class="aside-details">
               <li>
                 <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                <span>Praça Altamirando Requião, s/n - Centro, Conde — BA, 48.300-000</span>
+                <span><a href="https://maps.google.com/?q=Pra%C3%A7a+Altamirando+Requi%C3%A3o,+Conde+-+BA,+48300-000" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none; border-bottom: 1px dashed rgba(0, 0, 0, 0.2); transition: border-color 0.2s ease;" class="address-link">Praça Altamirando Requião, s/n - Centro, Conde — BA, 48.300-000</a></span>
               </li>
               <li>
                 <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
@@ -352,19 +352,64 @@ const structureSchema = JSON.stringify({
             </ul>
           </div>
 
-          <!-- Bloco do Mapa Estilizado -->
-          <div class="aside-block map-block" style="padding: 0; overflow: hidden; height: 220px;">
-            <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3902.932912448378!2d-37.6146039!3d-11.8123281!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x711c255e12ecad9%3A0xc33e2b2a6adab93a!2sPra%C3%A7a%20Altamirando%20Requi%C3%A3o%2C%20Conde%20-%20BA%2C%2048300-000!5e0!3m2!1spt-BR!2sbr!4v1720892019482!5m2!1spt-BR!2sbr" 
-              width="100%" 
-              height="100%" 
-              style="border:0; display: block;" 
-              allowfullscreen="" 
-              loading="lazy" 
-              referrerpolicy="no-referrer-when-downgrade"
-              title="Mapa de localização do escritório Duarte JR Engenharia"
-            ></iframe>
-          </div>
+          <!-- Bloco do Mapa Estilizado Artístico (Do Zero) -->
+          <a href="https://maps.google.com/?q=Pra%C3%A7a+Altamirando+Requi%C3%A3o,+Conde+-+BA,+48300-000" target="_blank" rel="noopener noreferrer" class="map-block-custom" aria-label="Abrir localização da Duarte JR no Google Maps">
+            <div class="blueprint-map-container">
+              <!-- Arte do Mapa em SVG -->
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 220" fill="none" class="blueprint-svg">
+                <!-- Grid de fundo de Engenharia -->
+                <defs>
+                  <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+                    <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(26, 122, 255, 0.04)" stroke-width="0.7"/>
+                  </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="#0a0a0a"/>
+                <rect width="100%" height="100%" fill="url(#grid)"/>
+
+                <!-- Ruas e Quadras de Conde (Representação Artística Blueprint) -->
+                <rect x="15" y="15" width="90" height="70" rx="4" fill="rgba(255,255,255,0.015)" stroke="rgba(26, 122, 255, 0.08)" stroke-width="1"/>
+                <rect x="120" y="15" width="160" height="70" rx="4" fill="rgba(255,255,255,0.015)" stroke="rgba(26, 122, 255, 0.08)" stroke-width="1"/>
+                <rect x="295" y="15" width="90" height="70" rx="4" fill="rgba(255,255,255,0.015)" stroke="rgba(26, 122, 255, 0.08)" stroke-width="1"/>
+                
+                <rect x="15" y="135" width="90" height="70" rx="4" fill="rgba(255,255,255,0.015)" stroke="rgba(26, 122, 255, 0.08)" stroke-width="1"/>
+                <rect x="120" y="135" width="160" height="70" rx="4" fill="rgba(255,255,255,0.015)" stroke="rgba(26, 122, 255, 0.08)" stroke-width="1"/>
+                <rect x="295" y="135" width="90" height="70" rx="4" fill="rgba(255,255,255,0.015)" stroke="rgba(26, 122, 255, 0.08)" stroke-width="1"/>
+
+                <!-- Ruas (Linhas guias centrais) -->
+                <path d="M 0 105 L 400 105" stroke="rgba(26, 122, 255, 0.15)" stroke-width="2" stroke-dasharray="4, 4"/>
+                <path d="M 107 0 L 107 220" stroke="rgba(26, 122, 255, 0.15)" stroke-width="1.5" stroke-dasharray="4, 4"/>
+                <path d="M 287 0 L 287 220" stroke="rgba(26, 122, 255, 0.15)" stroke-width="1.5" stroke-dasharray="4, 4"/>
+
+                <!-- Praça Altamirando Requião (Centro) -->
+                <g class="plaza-group">
+                  <rect x="135" y="90" width="130" height="30" rx="15" fill="rgba(26, 122, 255, 0.08)" stroke="#1a7aff" stroke-width="1.5" />
+                  <text x="200" y="108" fill="rgba(255, 255, 255, 0.6)" font-size="8.5" font-family="sans-serif" letter-spacing="1" text-anchor="middle" font-weight="bold">PRAÇA ALTAMIRANDO REQUIÃO</text>
+                </g>
+
+                <!-- Textos das Ruas -->
+                <text x="50" y="122" fill="rgba(255,255,255,0.3)" font-size="8" font-family="sans-serif">Rua do Centro</text>
+                <text x="315" y="122" fill="rgba(255,255,255,0.3)" font-size="8" font-family="sans-serif">Rua do Comércio</text>
+
+                <!-- Localização do Escritório Duarte JR (Com anéis pulsantes) -->
+                <g class="office-marker" transform="translate(200, 105)">
+                  <!-- Anéis de pulso -->
+                  <circle cx="0" cy="0" r="16" fill="rgba(26, 122, 255, 0.15)" class="pulse-ring-1"/>
+                  <circle cx="0" cy="0" r="28" fill="rgba(26, 122, 255, 0.08)" class="pulse-ring-2"/>
+                  <!-- Pin físico -->
+                  <path d="M 0 0 C -4 -4 -6 -10 0 -16 C 6 -10 4 -4 0 0 Z" fill="#1a7aff" stroke="#ffffff" stroke-width="1"/>
+                  <circle cx="0" cy="-10" r="3" fill="#ffffff" />
+                  <!-- Legenda Duarte JR -->
+                  <rect x="-42" y="-36" width="84" height="16" rx="3" fill="#161616" stroke="#1a7aff" stroke-width="1" />
+                  <text x="0" y="-25" fill="#ffffff" font-size="8" font-family="sans-serif" font-weight="bold" text-anchor="middle" letter-spacing="0.5">DUARTE JR</text>
+                </g>
+              </svg>
+              <!-- Info flutuante sobre clique -->
+              <div class="map-hover-hint">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                <span>Ver no Google Maps</span>
+              </div>
+            </div>
+          </a>
         </aside>
       </div>
     </div>
@@ -872,22 +917,94 @@ const structureSchema = JSON.stringify({
     background: #1fb855;
   }
 
-  /* Estilização do mapa da personalidade da marca */
-  .map-block {
+  /* Estilização do mapa da personalidade da marca (Do Zero) */
+  .map-block-custom {
+    display: block;
+    padding: 0 !important;
+    overflow: hidden;
+    height: 220px;
     position: relative;
     border: 1px solid var(--light-border);
-    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+    border-radius: 10px;
+    background: #0a0a0a;
+    text-decoration: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
   }
-  .map-block:hover {
-    border-color: rgba(26, 122, 255, 0.4);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+  
+  .map-block-custom:hover {
+    border-color: var(--primary);
+    box-shadow: 0 12px 35px rgba(26, 122, 255, 0.15);
   }
-  .map-block iframe {
-    filter: grayscale(1) invert(0.92) hue-rotate(205deg) contrast(1.15) brightness(0.95);
-    transition: filter 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  .blueprint-map-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
   }
-  .map-block:hover iframe {
-    filter: none; /* Revela as cores naturais do mapa para perfeita usabilidade */
+  
+  .blueprint-svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  
+  /* Animações dos Anéis Pulsantes */
+  .pulse-ring-1 {
+    animation: mapPulse 2s infinite ease-in-out;
+    transform-origin: 200px 105px;
+  }
+  
+  .pulse-ring-2 {
+    animation: mapPulse 2s infinite ease-in-out;
+    animation-delay: 0.8s;
+    transform-origin: 200px 105px;
+  }
+  
+  @keyframes mapPulse {
+    0% {
+      transform: scale(0.4);
+      opacity: 0.9;
+    }
+    100% {
+      transform: scale(1.3);
+      opacity: 0;
+    }
+  }
+
+  /* Info Flutuante do Mapa */
+  .map-hover-hint {
+    position: absolute;
+    bottom: 0.75rem;
+    right: 0.75rem;
+    background: rgba(14, 14, 14, 0.9);
+    border: 1px solid var(--border);
+    backdrop-filter: blur(8px);
+    padding: 0.35rem 0.65rem;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: #ffffff;
+    font-size: 0.7rem;
+    font-weight: 500;
+    opacity: 0;
+    transform: translateY(5px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  
+  .map-block-custom:hover .map-hover-hint {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Estilização do Link de Endereço */
+  .address-link {
+    transition: color 0.2s ease, border-color 0.2s ease;
+  }
+  
+  .address-link:hover {
+    color: var(--primary) !important;
+    border-bottom-color: var(--primary) !important;
   }
 
   .aside-details {
