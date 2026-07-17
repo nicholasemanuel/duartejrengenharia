@@ -89,13 +89,6 @@ const structureSchema = JSON.stringify({
             <span>Solicite um Orçamento</span>
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
           </a>
-
-          <a href="#servicos" class="hero-link-secondary">
-            <span class="btn-play-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-            </span>
-            <span>Nossos Serviços</span>
-          </a>
         </div>
 
       </div>
@@ -297,7 +290,7 @@ const structureSchema = JSON.stringify({
               </div>
               <div class="form-group">
                 <label for="phone" class="form-label">Telefone / WhatsApp</label>
-                <input type="tel" id="phone" name="phone" class="form-input" placeholder="(75) 98315-7927" required />
+                <input type="tel" id="phone" name="phone" class="form-input" placeholder="(00) 00000-0000" required />
               </div>
             </div>
 
@@ -569,30 +562,30 @@ const structureSchema = JSON.stringify({
     margin-bottom: 1.75rem;
   }
 
-  /* Stats — versão discreta */
+  /* Stats — versão destacada */
   .hero-stats {
     display: flex;
     align-items: center;
-    gap: 1.75rem;
-    margin-bottom: 2rem;
+    gap: 2rem;
+    margin-bottom: 2.25rem;
   }
 
   .hero-stat-item {
     display: flex;
     flex-direction: column;
-    gap: 0.1rem;
+    gap: 0.2rem;
   }
 
   .hero-stat-item strong {
     font-family: var(--font-title);
-    font-size: 1.35rem;
+    font-size: 1.85rem;
     font-weight: 400;
     color: var(--text-primary);
     line-height: 1;
   }
 
   .hero-stat-item span {
-    font-size: 0.7rem;
+    font-size: 0.82rem;
     color: var(--text-muted);
     text-transform: uppercase;
     letter-spacing: 0.07em;
@@ -600,7 +593,7 @@ const structureSchema = JSON.stringify({
 
   .hero-stat-divider {
     width: 1px;
-    height: 30px;
+    height: 40px;
     background: var(--border);
   }
 
@@ -649,24 +642,24 @@ const structureSchema = JSON.stringify({
     border: 1px solid var(--border);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border-radius: 10px;
+    border-radius: 12px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    padding: 1.25rem 2rem;
-    gap: 1.5rem;
+    padding: 1.5rem 2.25rem;
+    gap: 2rem;
   }
 
   .spec-item {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 1.15rem;
   }
 
   .spec-icon-box {
-    width: 40px;
-    height: 40px;
-    border-radius: 8px;
-    background: transparent;
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    background: rgba(26, 122, 255, 0.08);
     border: 1px solid var(--border);
     display: flex;
     align-items: center;
@@ -675,16 +668,21 @@ const structureSchema = JSON.stringify({
     flex-shrink: 0;
   }
 
+  .spec-icon-box svg {
+    width: 24px;
+    height: 24px;
+  }
+
   .spec-info h4 {
     font-family: var(--font-body);
-    font-size: 0.82rem;
+    font-size: 0.95rem;
     font-weight: 600;
     color: var(--text-primary);
-    margin-bottom: 0.1rem;
+    margin-bottom: 0.15rem;
   }
 
   .spec-info p {
-    font-size: 0.78rem;
+    font-size: 0.86rem;
     color: var(--text-muted);
   }
 
