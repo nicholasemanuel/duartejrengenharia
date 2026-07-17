@@ -362,122 +362,104 @@ const structureSchema = JSON.stringify({
             </ul>
           </div>
 
-          <!-- Bloco do Mapa Estilizado e Legível (Planta/Blueprint Técnico de Conde - BA) -->
+          <!-- Bloco do Mapa Estilizado (Estilo Minimalista com Vias Claras, Parque Verde e Rota Pontilhada) -->
           <a href="https://maps.google.com/?q=Pra%C3%A7a+Altamirando+Requi%C3%A3o,+Conde+-+BA,+48300-000" target="_blank" rel="noopener noreferrer" class="map-block-custom" aria-label="Abrir localização da Duarte JR no Google Maps">
             <div class="blueprint-map-container">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 250" fill="none" class="blueprint-svg">
-                <defs>
-                  <!-- Padronagem de Grid de Engenharia -->
-                  <pattern id="grid-pattern" width="25" height="25" patternUnits="userSpaceOnUse">
-                    <path d="M 25 0 L 0 0 0 25" fill="none" stroke="rgba(26, 122, 255, 0.06)" stroke-width="0.8"/>
-                    <circle cx="25" cy="25" r="0.8" fill="rgba(26, 122, 255, 0.15)"/>
-                  </pattern>
-                  <!-- Gradiente para o Rio/Litoral -->
-                  <linearGradient id="water-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="rgba(14, 45, 90, 0.3)" />
-                    <stop offset="100%" stop-color="rgba(10, 25, 50, 0.5)" />
-                  </linearGradient>
-                </defs>
+                <!-- Fundo dos Terrenos (Slate Escuro da Marca) -->
+                <rect width="100%" height="100%" fill="#141822"/>
 
-                <!-- Fundo do Mapa (Blueprint Escuro) -->
-                <rect width="100%" height="100%" fill="#0a0e14"/>
-                <rect width="100%" height="100%" fill="url(#grid-pattern)"/>
+                <!-- Quadras / Blocos Urbanos (Formas geométricas suaves) -->
+                <g class="map-land-blocks" fill="#1b212f" stroke="none">
+                  <!-- Setor Superior Esquerdo -->
+                  <path d="M 0 0 L 120 0 L 100 70 L 0 50 Z"/>
+                  <path d="M 130 0 L 230 0 L 210 60 L 115 65 Z"/>
+                  <path d="M 240 0 L 340 0 L 330 55 L 220 60 Z"/>
+                  <path d="M 350 0 L 450 0 L 450 65 L 340 55 Z"/>
 
-                <!-- Curva do Rio/Corpo D'água local (Eixo Leste) -->
-                <path d="M 390 0 C 400 60, 420 120, 380 180 C 360 210, 370 250, 360 250 L 450 250 L 450 0 Z" fill="url(#water-grad)" stroke="rgba(26, 122, 255, 0.18)" stroke-width="1"/>
-                <text x="405" y="140" fill="rgba(26, 122, 255, 0.35)" font-size="7" font-family="sans-serif" font-weight="bold" letter-spacing="1.5" transform="rotate(90, 405, 140)">LITORAL / RIO</text>
+                  <!-- Setor Central Meio -->
+                  <path d="M 0 60 L 90 78 L 70 140 L 0 130 Z"/>
+                  <path d="M 100 80 L 180 85 L 175 145 L 80 142 Z"/>
+                  <path d="M 200 70 L 310 70 L 305 140 L 190 145 Z"/>
+                  <path d="M 320 65 L 450 75 L 450 140 L 315 140 Z"/>
 
-                <!-- Malha Urbana / Blocos e Quadras -->
-                <g class="city-blocks" stroke="rgba(26, 122, 255, 0.12)" stroke-width="1" fill="rgba(255, 255, 255, 0.02)">
-                  <!-- Setor Norte -->
-                  <rect x="20" y="20" width="80" height="55" rx="3"/>
-                  <rect x="110" y="20" width="100" height="55" rx="3"/>
-                  <rect x="220" y="20" width="130" height="55" rx="3"/>
-                  
-                  <!-- Setor Sul -->
-                  <rect x="20" y="175" width="80" height="55" rx="3"/>
-                  <rect x="110" y="175" width="100" height="55" rx="3"/>
-                  <rect x="220" y="175" width="130" height="55" rx="3"/>
+                  <!-- Setor Inferior -->
+                  <path d="M 0 140 L 65 150 L 50 250 L 0 250 Z"/>
+                  <path d="M 75 152 L 170 155 L 160 250 L 60 250 Z"/>
+                  <path d="M 180 155 L 300 150 L 290 250 L 170 250 Z"/>
+                  <path d="M 310 150 L 450 150 L 450 250 L 300 250 Z"/>
                 </g>
 
-                <!-- Rodovia Principal BA-099 (Linha Verde) -->
-                <path d="M 0 45 L 450 45" stroke="rgba(26, 122, 255, 0.4)" stroke-width="6"/>
-                <path d="M 0 45 L 450 45" stroke="#ffffff" stroke-width="1" stroke-dasharray="6, 6" opacity="0.8"/>
-                <text x="300" y="38" fill="rgba(255, 255, 255, 0.7)" font-size="7.5" font-family="sans-serif" font-weight="bold" letter-spacing="1">RODOVIA BA-099 (LINHA VERDE)</text>
+                <!-- Áreas Verdes / Parques Orgânicos (Estilo anexo) -->
+                <!-- Praça Altamirando Requião (Verde Vibrante Orgânico) -->
+                <path d="M 195 72 L 305 72 L 300 135 L 185 140 Z" fill="#2e7d32" opacity="0.9"/>
+                <path d="M 110 0 L 180 0 L 160 45 L 100 40 Z" fill="#388e3c" opacity="0.8"/>
+                <path d="M 360 155 L 450 155 L 450 250 L 350 250 Z" fill="#2e7d32" opacity="0.85"/>
 
-                <!-- Vias Urbanas Secundárias de Conde -->
-                <!-- Av. Irineu Alves (Horizontal Central) -->
-                <path d="M 0 125 L 370 125" stroke="rgba(255, 255, 255, 0.25)" stroke-width="4"/>
-                <text x="35" y="118" fill="rgba(240, 236, 228, 0.85)" font-size="8" font-family="sans-serif" font-weight="600">AV. IRINEU ALVES (CENTRO)</text>
+                <!-- Malha de Vias / Vias Claras e Espessas (Estilo Anexo) -->
+                <g class="map-streets" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" opacity="0.9">
+                  <!-- Vias Principais (Espessura 7px) -->
+                  <path d="M 0 55 L 450 65" stroke-width="7"/>
+                  <path d="M 0 135 L 450 145" stroke-width="8"/>
+                  <path d="M 95 0 L 70 250" stroke-width="7"/>
+                  <path d="M 185 0 L 175 250" stroke-width="7"/>
+                  <path d="M 310 0 L 300 250" stroke-width="8"/>
 
-                <!-- Vias Transversais -->
-                <path d="M 105 45 L 105 250" stroke="rgba(255, 255, 255, 0.18)" stroke-width="3"/>
-                <text x="110" y="235" fill="rgba(255, 255, 255, 0.45)" font-size="7" font-family="sans-serif" transform="rotate(-90, 110, 235)">RUA DA MATRIZ</text>
-
-                <path d="M 215 45 L 215 250" stroke="rgba(255, 255, 255, 0.18)" stroke-width="3"/>
-                <text x="220" y="235" fill="rgba(255, 255, 255, 0.45)" font-size="7" font-family="sans-serif" transform="rotate(-90, 220, 235)">RUA DO COMÉRCIO</text>
-
-                <!-- Destaque: Praça Altamirando Requião (Área de Referência Central) -->
-                <g class="plaza-landmark">
-                  <rect x="130" y="98" width="165" height="54" rx="8" fill="rgba(26, 122, 255, 0.15)" stroke="#1a7aff" stroke-width="1.5"/>
-                  <rect x="134" y="102" width="157" height="46" rx="6" fill="none" stroke="rgba(26, 122, 255, 0.3)" stroke-dasharray="3, 3"/>
-                  <text x="212" y="115" fill="#ffffff" font-size="8.5" font-family="sans-serif" font-weight="bold" text-anchor="middle" letter-spacing="0.5">PRAÇA ALTAMIRANDO REQUIÃO</text>
-                  <text x="212" y="126" fill="rgba(255, 255, 255, 0.6)" font-size="7" font-family="sans-serif" text-anchor="middle">Centro Urbano — Conde / BA</text>
+                  <!-- Vias Secundárias (Espessura 4px) -->
+                  <path d="M 0 95 L 175 100" stroke-width="4"/>
+                  <path d="M 185 105 L 450 100" stroke-width="4"/>
+                  <path d="M 40 0 L 25 250" stroke-width="4"/>
+                  <path d="M 250 0 L 240 250" stroke-width="4"/>
+                  <path d="M 380 0 L 365 250" stroke-width="4"/>
                 </g>
 
-                <!-- Pontos de Referência (Badges de Apoio) -->
-                <!-- Prefeitura Municipal -->
-                <g class="poi-tag" transform="translate(45, 140)">
-                  <rect x="0" y="0" width="55" height="15" rx="3" fill="#141922" stroke="rgba(255,255,255,0.2)" stroke-width="0.8"/>
-                  <text x="27" y="10" fill="rgba(255,255,255,0.7)" font-size="6.5" font-family="sans-serif" text-anchor="middle">Prefeitura</text>
+                <!-- Rota em Linha Pontilhada (Estilo Anexo no Tom Azul da Marca) -->
+                <path d="M 370 20 L 370 100 L 245 100 L 245 140 L 180 140" 
+                      stroke="#1a7aff" 
+                      stroke-width="3" 
+                      stroke-dasharray="6, 4" 
+                      stroke-linecap="round" 
+                      stroke-linejoin="round"/>
+
+                <!-- Nós Circulares de Rota (Círculos azuis com miolo escuro - Igual anexo) -->
+                <g class="route-nodes">
+                  <circle cx="370" cy="20" r="6" fill="#0e121a" stroke="#1a7aff" stroke-width="3"/>
+                  <circle cx="370" cy="100" r="6" fill="#0e121a" stroke="#1a7aff" stroke-width="3"/>
+                  <circle cx="245" cy="100" r="6" fill="#0e121a" stroke="#1a7aff" stroke-width="3"/>
                 </g>
 
-                <!-- Igreja Matriz -->
-                <g class="poi-tag" transform="translate(45, 80)">
-                  <rect x="0" y="0" width="55" height="15" rx="3" fill="#141922" stroke="rgba(255,255,255,0.2)" stroke-width="0.8"/>
-                  <text x="27" y="10" fill="rgba(255,255,255,0.7)" font-size="6.5" font-family="sans-serif" text-anchor="middle">Igreja Matriz</text>
-                </g>
+                <!-- Nomes das Vias e Locais (Alta Legibilidade) -->
+                <text x="15" y="48" fill="#141822" font-size="7.5" font-family="sans-serif" font-weight="bold" letter-spacing="0.5">RODOVIA BA-099</text>
+                <text x="15" y="128" fill="#141822" font-size="8" font-family="sans-serif" font-weight="bold" letter-spacing="0.5">AV. IRINEU ALVES (CENTRO)</text>
 
-                <!-- MARCADOR PRINCIPAL DA DUARTE JR (Sede) -->
-                <g class="office-marker-highlight" transform="translate(212, 125)">
-                  <!-- Anéis Pulsantes de Alta Visibilidade -->
-                  <circle cx="0" cy="0" r="18" fill="rgba(26, 122, 255, 0.25)" class="pulse-ring-1"/>
-                  <circle cx="0" cy="0" r="32" fill="rgba(26, 122, 255, 0.12)" class="pulse-ring-2"/>
-                  
-                  <!-- Ícone do Pin Físico -->
-                  <path d="M 0 0 L -7 -14 A 9 9 0 1 1 7 -14 Z" fill="#1a7aff" stroke="#ffffff" stroke-width="1.5"/>
-                  <circle cx="0" cy="-14" r="3.5" fill="#ffffff" />
-                  
-                  <!-- Placa Comercial Duarte JR -->
-                  <g class="marker-card" transform="translate(0, -38)">
-                    <rect x="-65" y="-12" width="130" height="22" rx="4" fill="#0e0e0e" stroke="#1a7aff" stroke-width="1.5"/>
-                    <text x="0" y="-1" fill="#ffffff" font-size="8.5" font-family="sans-serif" font-weight="bold" text-anchor="middle" letter-spacing="0.6">DUARTE JR ENGENHARIA</text>
-                    <text x="0" y="7" fill="#1a7aff" font-size="6.5" font-family="sans-serif" font-weight="bold" text-anchor="middle">SEDE CONDE — S/N</text>
+                <!-- Rótulo da Praça Altamirando Requião -->
+                <rect x="200" y="85" width="90" height="18" rx="4" fill="#141822" opacity="0.9"/>
+                <text x="245" y="97" fill="#ffffff" font-size="7" font-family="sans-serif" font-weight="bold" text-anchor="middle">PRAÇA ALTAMIRANDO REQUIÃO</text>
+
+                <!-- PONTO DE DESTINO PRINCIPAL (DUARTE JR ENGENHARIA) -->
+                <g class="destination-node" transform="translate(180, 140)">
+                  <!-- Anéis de Pulso Animados da Marca -->
+                  <circle cx="0" cy="0" r="18" fill="rgba(26, 122, 255, 0.3)" class="pulse-ring-1"/>
+                  <circle cx="0" cy="0" r="32" fill="rgba(26, 122, 255, 0.15)" class="pulse-ring-2"/>
+
+                  <!-- Pin Físico de Destino -->
+                  <circle cx="0" cy="0" r="8" fill="#1a7aff" stroke="#ffffff" stroke-width="2.5"/>
+                  <circle cx="0" cy="0" r="3" fill="#ffffff"/>
+
+                  <!-- Placa Badge do Escritório -->
+                  <g class="office-badge-card" transform="translate(0, -32)">
+                    <rect x="-62" y="-11" width="124" height="22" rx="4" fill="#0e1017" stroke="#1a7aff" stroke-width="1.5"/>
+                    <text x="0" y="-1" fill="#ffffff" font-size="8" font-family="sans-serif" font-weight="bold" text-anchor="middle">DUARTE JR ENGENHARIA</text>
+                    <text x="0" y="7" fill="#1a7aff" font-size="6" font-family="sans-serif" font-weight="bold" text-anchor="middle">SEDE CONDE — PRAÇA CENTRAL</text>
                   </g>
                 </g>
 
-                <!-- Elementos de Engenharia e Escala -->
-                <!-- Rosa dos Ventos / Bússola (Canto Superior Direito) -->
-                <g class="compass" transform="translate(420, 85)">
-                  <circle cx="0" cy="0" r="14" fill="#0a0e14" stroke="rgba(26, 122, 255, 0.3)" stroke-width="1"/>
-                  <path d="M 0 -11 L 3 0 L 0 -2 L -3 0 Z" fill="#1a7aff"/>
-                  <path d="M 0 11 L 3 0 L 0 2 L -3 0 Z" fill="rgba(255,255,255,0.3)"/>
-                  <text x="0" y="-14" fill="#ffffff" font-size="7" font-family="sans-serif" font-weight="bold" text-anchor="middle">N</text>
+                <!-- Rosa dos Ventos Discreta -->
+                <g class="compass" transform="translate(425, 25)">
+                  <circle cx="0" cy="0" r="12" fill="#0e121a" stroke="rgba(255, 255, 255, 0.3)" stroke-width="1"/>
+                  <path d="M 0 -9 L 2.5 0 L 0 -1.5 L -2.5 0 Z" fill="#1a7aff"/>
+                  <text x="0" y="-11" fill="#ffffff" font-size="6.5" font-family="sans-serif" font-weight="bold" text-anchor="middle">N</text>
                 </g>
-
-                <!-- Escala Gráfica (Canto Inferior Esquerdo) -->
-                <g class="scale-bar" transform="translate(15, 232)">
-                  <line x1="0" y1="0" x2="80" y2="0" stroke="rgba(255, 255, 255, 0.5)" stroke-width="1.5"/>
-                  <line x1="0" y1="-3" x2="0" y2="3" stroke="rgba(255, 255, 255, 0.5)" stroke-width="1.5"/>
-                  <line x1="40" y1="-2" x2="40" y2="2" stroke="rgba(255, 255, 255, 0.5)" stroke-width="1"/>
-                  <line x1="80" y1="-3" x2="80" y2="3" stroke="rgba(255, 255, 255, 0.5)" stroke-width="1.5"/>
-                  <text x="0" y="-5" fill="rgba(255, 255, 255, 0.6)" font-size="6.5" font-family="sans-serif">0</text>
-                  <text x="40" y="-5" fill="rgba(255, 255, 255, 0.6)" font-size="6.5" font-family="sans-serif" text-anchor="middle">100m</text>
-                  <text x="80" y="-5" fill="rgba(255, 255, 255, 0.6)" font-size="6.5" font-family="sans-serif" text-anchor="end">250m</text>
-                </g>
-
-                <!-- Coordenadas de Conde (Canto Inferior Direito) -->
-                <text x="435" y="240" fill="rgba(255, 255, 255, 0.4)" font-size="6.5" font-family="sans-serif" text-anchor="end">11°48'44"S 37°36'42"W</text>
               </svg>
 
               <!-- Dica no Hover -->
