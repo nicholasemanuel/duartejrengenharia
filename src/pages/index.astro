@@ -133,16 +133,13 @@ const structureSchema = JSON.stringify({
   <!-- 2. Serviços Section (#servicos - Clara) -->
   <section id="servicos" class="section-light">
     <div class="container">
-      <div class="section-header-split reveal">
-        <div class="section-header-left">
-          <span class="section-tag-light">Nossos Serviços</span>
-          <h2>Soluções completas para <span>sua obra.</span></h2>
-        </div>
-        <div class="section-header-right">
-          <p>
-            Atuamos em todas as etapas do seu projeto, garantindo eficiência, qualidade e cumprimento de prazos combinados.
-          </p>
-        </div>
+      <!-- Cabeçalho empilhado da seção -->
+      <div class="section-header-stacked reveal">
+        <span class="section-tag-light">Nossos Serviços</span>
+        <h2>Soluções completas para <span>sua obra.</span></h2>
+        <p class="section-subtitle-light">
+          Atuamos em todas as etapas do seu projeto, garantindo eficiência, qualidade e cumprimento de prazos combinados.
+        </p>
       </div>
 
       <!-- Grid de Serviços (6 cards reorganizados) -->
@@ -365,61 +362,128 @@ const structureSchema = JSON.stringify({
             </ul>
           </div>
 
-          <!-- Bloco do Mapa Estilizado Artístico (Do Zero) -->
+          <!-- Bloco do Mapa Estilizado e Legível (Planta/Blueprint Técnico de Conde - BA) -->
           <a href="https://maps.google.com/?q=Pra%C3%A7a+Altamirando+Requi%C3%A3o,+Conde+-+BA,+48300-000" target="_blank" rel="noopener noreferrer" class="map-block-custom" aria-label="Abrir localização da Duarte JR no Google Maps">
             <div class="blueprint-map-container">
-              <!-- Arte do Mapa em SVG -->
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 220" fill="none" class="blueprint-svg">
-                <!-- Grid de fundo de Engenharia -->
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 250" fill="none" class="blueprint-svg">
                 <defs>
-                  <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
-                    <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(26, 122, 255, 0.04)" stroke-width="0.7"/>
+                  <!-- Padronagem de Grid de Engenharia -->
+                  <pattern id="grid-pattern" width="25" height="25" patternUnits="userSpaceOnUse">
+                    <path d="M 25 0 L 0 0 0 25" fill="none" stroke="rgba(26, 122, 255, 0.06)" stroke-width="0.8"/>
+                    <circle cx="25" cy="25" r="0.8" fill="rgba(26, 122, 255, 0.15)"/>
                   </pattern>
+                  <!-- Gradiente para o Rio/Litoral -->
+                  <linearGradient id="water-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="rgba(14, 45, 90, 0.3)" />
+                    <stop offset="100%" stop-color="rgba(10, 25, 50, 0.5)" />
+                  </linearGradient>
                 </defs>
-                <rect width="100%" height="100%" fill="#0a0a0a"/>
-                <rect width="100%" height="100%" fill="url(#grid)"/>
 
-                <!-- Ruas e Quadras de Conde (Representação Artística Blueprint) -->
-                <rect x="15" y="15" width="90" height="70" rx="4" fill="rgba(255,255,255,0.015)" stroke="rgba(26, 122, 255, 0.08)" stroke-width="1"/>
-                <rect x="120" y="15" width="160" height="70" rx="4" fill="rgba(255,255,255,0.015)" stroke="rgba(26, 122, 255, 0.08)" stroke-width="1"/>
-                <rect x="295" y="15" width="90" height="70" rx="4" fill="rgba(255,255,255,0.015)" stroke="rgba(26, 122, 255, 0.08)" stroke-width="1"/>
-                
-                <rect x="15" y="135" width="90" height="70" rx="4" fill="rgba(255,255,255,0.015)" stroke="rgba(26, 122, 255, 0.08)" stroke-width="1"/>
-                <rect x="120" y="135" width="160" height="70" rx="4" fill="rgba(255,255,255,0.015)" stroke="rgba(26, 122, 255, 0.08)" stroke-width="1"/>
-                <rect x="295" y="135" width="90" height="70" rx="4" fill="rgba(255,255,255,0.015)" stroke="rgba(26, 122, 255, 0.08)" stroke-width="1"/>
+                <!-- Fundo do Mapa (Blueprint Escuro) -->
+                <rect width="100%" height="100%" fill="#0a0e14"/>
+                <rect width="100%" height="100%" fill="url(#grid-pattern)"/>
 
-                <!-- Ruas (Linhas guias centrais) -->
-                <path d="M 0 105 L 400 105" stroke="rgba(26, 122, 255, 0.15)" stroke-width="2" stroke-dasharray="4, 4"/>
-                <path d="M 107 0 L 107 220" stroke="rgba(26, 122, 255, 0.15)" stroke-width="1.5" stroke-dasharray="4, 4"/>
-                <path d="M 287 0 L 287 220" stroke="rgba(26, 122, 255, 0.15)" stroke-width="1.5" stroke-dasharray="4, 4"/>
+                <!-- Curva do Rio/Corpo D'água local (Eixo Leste) -->
+                <path d="M 390 0 C 400 60, 420 120, 380 180 C 360 210, 370 250, 360 250 L 450 250 L 450 0 Z" fill="url(#water-grad)" stroke="rgba(26, 122, 255, 0.18)" stroke-width="1"/>
+                <text x="405" y="140" fill="rgba(26, 122, 255, 0.35)" font-size="7" font-family="sans-serif" font-weight="bold" letter-spacing="1.5" transform="rotate(90, 405, 140)">LITORAL / RIO</text>
 
-                <!-- Praça Altamirando Requião (Centro) -->
-                <g class="plaza-group">
-                  <rect x="135" y="90" width="130" height="30" rx="15" fill="rgba(26, 122, 255, 0.08)" stroke="#1a7aff" stroke-width="1.5" />
-                  <text x="200" y="108" fill="rgba(255, 255, 255, 0.6)" font-size="8.5" font-family="sans-serif" letter-spacing="1" text-anchor="middle" font-weight="bold">PRAÇA ALTAMIRANDO REQUIÃO</text>
+                <!-- Malha Urbana / Blocos e Quadras -->
+                <g class="city-blocks" stroke="rgba(26, 122, 255, 0.12)" stroke-width="1" fill="rgba(255, 255, 255, 0.02)">
+                  <!-- Setor Norte -->
+                  <rect x="20" y="20" width="80" height="55" rx="3"/>
+                  <rect x="110" y="20" width="100" height="55" rx="3"/>
+                  <rect x="220" y="20" width="130" height="55" rx="3"/>
+                  
+                  <!-- Setor Sul -->
+                  <rect x="20" y="175" width="80" height="55" rx="3"/>
+                  <rect x="110" y="175" width="100" height="55" rx="3"/>
+                  <rect x="220" y="175" width="130" height="55" rx="3"/>
                 </g>
 
-                <!-- Textos das Ruas -->
-                <text x="50" y="122" fill="rgba(255,255,255,0.3)" font-size="8" font-family="sans-serif">Rua do Centro</text>
-                <text x="315" y="122" fill="rgba(255,255,255,0.3)" font-size="8" font-family="sans-serif">Rua do Comércio</text>
+                <!-- Rodovia Principal BA-099 (Linha Verde) -->
+                <path d="M 0 45 L 450 45" stroke="rgba(26, 122, 255, 0.4)" stroke-width="6"/>
+                <path d="M 0 45 L 450 45" stroke="#ffffff" stroke-width="1" stroke-dasharray="6, 6" opacity="0.8"/>
+                <text x="300" y="38" fill="rgba(255, 255, 255, 0.7)" font-size="7.5" font-family="sans-serif" font-weight="bold" letter-spacing="1">RODOVIA BA-099 (LINHA VERDE)</text>
 
-                <!-- Localização do Escritório Duarte JR (Com anéis pulsantes) -->
-                <g class="office-marker" transform="translate(200, 105)">
-                  <!-- Anéis de pulso -->
-                  <circle cx="0" cy="0" r="16" fill="rgba(26, 122, 255, 0.15)" class="pulse-ring-1"/>
-                  <circle cx="0" cy="0" r="28" fill="rgba(26, 122, 255, 0.08)" class="pulse-ring-2"/>
-                  <!-- Pin físico -->
-                  <path d="M 0 0 C -4 -4 -6 -10 0 -16 C 6 -10 4 -4 0 0 Z" fill="#1a7aff" stroke="#ffffff" stroke-width="1"/>
-                  <circle cx="0" cy="-10" r="3" fill="#ffffff" />
-                  <!-- Legenda Duarte JR -->
-                  <rect x="-42" y="-36" width="84" height="16" rx="3" fill="#161616" stroke="#1a7aff" stroke-width="1" />
-                  <text x="0" y="-25" fill="#ffffff" font-size="8" font-family="sans-serif" font-weight="bold" text-anchor="middle" letter-spacing="0.5">DUARTE JR</text>
+                <!-- Vias Urbanas Secundárias de Conde -->
+                <!-- Av. Irineu Alves (Horizontal Central) -->
+                <path d="M 0 125 L 370 125" stroke="rgba(255, 255, 255, 0.25)" stroke-width="4"/>
+                <text x="35" y="118" fill="rgba(240, 236, 228, 0.85)" font-size="8" font-family="sans-serif" font-weight="600">AV. IRINEU ALVES (CENTRO)</text>
+
+                <!-- Vias Transversais -->
+                <path d="M 105 45 L 105 250" stroke="rgba(255, 255, 255, 0.18)" stroke-width="3"/>
+                <text x="110" y="235" fill="rgba(255, 255, 255, 0.45)" font-size="7" font-family="sans-serif" transform="rotate(-90, 110, 235)">RUA DA MATRIZ</text>
+
+                <path d="M 215 45 L 215 250" stroke="rgba(255, 255, 255, 0.18)" stroke-width="3"/>
+                <text x="220" y="235" fill="rgba(255, 255, 255, 0.45)" font-size="7" font-family="sans-serif" transform="rotate(-90, 220, 235)">RUA DO COMÉRCIO</text>
+
+                <!-- Destaque: Praça Altamirando Requião (Área de Referência Central) -->
+                <g class="plaza-landmark">
+                  <rect x="130" y="98" width="165" height="54" rx="8" fill="rgba(26, 122, 255, 0.15)" stroke="#1a7aff" stroke-width="1.5"/>
+                  <rect x="134" y="102" width="157" height="46" rx="6" fill="none" stroke="rgba(26, 122, 255, 0.3)" stroke-dasharray="3, 3"/>
+                  <text x="212" y="115" fill="#ffffff" font-size="8.5" font-family="sans-serif" font-weight="bold" text-anchor="middle" letter-spacing="0.5">PRAÇA ALTAMIRANDO REQUIÃO</text>
+                  <text x="212" y="126" fill="rgba(255, 255, 255, 0.6)" font-size="7" font-family="sans-serif" text-anchor="middle">Centro Urbano — Conde / BA</text>
                 </g>
+
+                <!-- Pontos de Referência (Badges de Apoio) -->
+                <!-- Prefeitura Municipal -->
+                <g class="poi-tag" transform="translate(45, 140)">
+                  <rect x="0" y="0" width="55" height="15" rx="3" fill="#141922" stroke="rgba(255,255,255,0.2)" stroke-width="0.8"/>
+                  <text x="27" y="10" fill="rgba(255,255,255,0.7)" font-size="6.5" font-family="sans-serif" text-anchor="middle">Prefeitura</text>
+                </g>
+
+                <!-- Igreja Matriz -->
+                <g class="poi-tag" transform="translate(45, 80)">
+                  <rect x="0" y="0" width="55" height="15" rx="3" fill="#141922" stroke="rgba(255,255,255,0.2)" stroke-width="0.8"/>
+                  <text x="27" y="10" fill="rgba(255,255,255,0.7)" font-size="6.5" font-family="sans-serif" text-anchor="middle">Igreja Matriz</text>
+                </g>
+
+                <!-- MARCADOR PRINCIPAL DA DUARTE JR (Sede) -->
+                <g class="office-marker-highlight" transform="translate(212, 125)">
+                  <!-- Anéis Pulsantes de Alta Visibilidade -->
+                  <circle cx="0" cy="0" r="18" fill="rgba(26, 122, 255, 0.25)" class="pulse-ring-1"/>
+                  <circle cx="0" cy="0" r="32" fill="rgba(26, 122, 255, 0.12)" class="pulse-ring-2"/>
+                  
+                  <!-- Ícone do Pin Físico -->
+                  <path d="M 0 0 L -7 -14 A 9 9 0 1 1 7 -14 Z" fill="#1a7aff" stroke="#ffffff" stroke-width="1.5"/>
+                  <circle cx="0" cy="-14" r="3.5" fill="#ffffff" />
+                  
+                  <!-- Placa Comercial Duarte JR -->
+                  <g class="marker-card" transform="translate(0, -38)">
+                    <rect x="-65" y="-12" width="130" height="22" rx="4" fill="#0e0e0e" stroke="#1a7aff" stroke-width="1.5"/>
+                    <text x="0" y="-1" fill="#ffffff" font-size="8.5" font-family="sans-serif" font-weight="bold" text-anchor="middle" letter-spacing="0.6">DUARTE JR ENGENHARIA</text>
+                    <text x="0" y="7" fill="#1a7aff" font-size="6.5" font-family="sans-serif" font-weight="bold" text-anchor="middle">SEDE CONDE — S/N</text>
+                  </g>
+                </g>
+
+                <!-- Elementos de Engenharia e Escala -->
+                <!-- Rosa dos Ventos / Bússola (Canto Superior Direito) -->
+                <g class="compass" transform="translate(420, 85)">
+                  <circle cx="0" cy="0" r="14" fill="#0a0e14" stroke="rgba(26, 122, 255, 0.3)" stroke-width="1"/>
+                  <path d="M 0 -11 L 3 0 L 0 -2 L -3 0 Z" fill="#1a7aff"/>
+                  <path d="M 0 11 L 3 0 L 0 2 L -3 0 Z" fill="rgba(255,255,255,0.3)"/>
+                  <text x="0" y="-14" fill="#ffffff" font-size="7" font-family="sans-serif" font-weight="bold" text-anchor="middle">N</text>
+                </g>
+
+                <!-- Escala Gráfica (Canto Inferior Esquerdo) -->
+                <g class="scale-bar" transform="translate(15, 232)">
+                  <line x1="0" y1="0" x2="80" y2="0" stroke="rgba(255, 255, 255, 0.5)" stroke-width="1.5"/>
+                  <line x1="0" y1="-3" x2="0" y2="3" stroke="rgba(255, 255, 255, 0.5)" stroke-width="1.5"/>
+                  <line x1="40" y1="-2" x2="40" y2="2" stroke="rgba(255, 255, 255, 0.5)" stroke-width="1"/>
+                  <line x1="80" y1="-3" x2="80" y2="3" stroke="rgba(255, 255, 255, 0.5)" stroke-width="1.5"/>
+                  <text x="0" y="-5" fill="rgba(255, 255, 255, 0.6)" font-size="6.5" font-family="sans-serif">0</text>
+                  <text x="40" y="-5" fill="rgba(255, 255, 255, 0.6)" font-size="6.5" font-family="sans-serif" text-anchor="middle">100m</text>
+                  <text x="80" y="-5" fill="rgba(255, 255, 255, 0.6)" font-size="6.5" font-family="sans-serif" text-anchor="end">250m</text>
+                </g>
+
+                <!-- Coordenadas de Conde (Canto Inferior Direito) -->
+                <text x="435" y="240" fill="rgba(255, 255, 255, 0.4)" font-size="6.5" font-family="sans-serif" text-anchor="end">11°48'44"S 37°36'42"W</text>
               </svg>
-              <!-- Info flutuante sobre clique -->
+
+              <!-- Dica no Hover -->
               <div class="map-hover-hint">
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                <span>Ver no Google Maps</span>
+                <span>Clique para abrir no Google Maps</span>
               </div>
             </div>
           </a>
@@ -673,26 +737,21 @@ const structureSchema = JSON.stringify({
     height: 24px;
   }
 
-  .spec-info h4 {
-    font-family: var(--font-body);
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: var(--text-primary);
-    margin-bottom: 0.15rem;
-  }
-
-  .spec-info p {
-    font-size: 0.86rem;
-    color: var(--text-muted);
-  }
-
   /* ── Serviços ─────────────────────────────── */
-  .section-header-split {
-    display: grid;
-    grid-template-columns: 1.1fr 1fr;
-    gap: 4rem;
-    align-items: end;
+  .section-header-stacked {
+    max-width: 680px;
     margin-bottom: 3.5rem;
+  }
+
+  .section-header-stacked h2 {
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    margin-bottom: 0.85rem;
+  }
+
+  .section-subtitle-light {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--light-muted);
   }
 
   .section-tag-light,
@@ -961,18 +1020,18 @@ const structureSchema = JSON.stringify({
     display: block;
     padding: 0 !important;
     overflow: hidden;
-    height: 220px;
+    height: 250px;
     position: relative;
     border: 1px solid var(--light-border);
-    border-radius: 10px;
-    background: #0a0a0a;
+    border-radius: 12px;
+    background: #0a0e14;
     text-decoration: none;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
   }
   
   .map-block-custom:hover {
     border-color: var(--primary);
-    box-shadow: 0 12px 35px rgba(26, 122, 255, 0.15);
+    box-shadow: 0 12px 35px rgba(26, 122, 255, 0.18);
   }
   
   .blueprint-map-container {
@@ -990,13 +1049,15 @@ const structureSchema = JSON.stringify({
   /* Animações dos Anéis Pulsantes */
   .pulse-ring-1 {
     animation: mapPulse 2s infinite ease-in-out;
-    transform-origin: 200px 105px;
+    transform-box: fill-box;
+    transform-origin: center;
   }
   
   .pulse-ring-2 {
     animation: mapPulse 2s infinite ease-in-out;
     animation-delay: 0.8s;
-    transform-origin: 200px 105px;
+    transform-box: fill-box;
+    transform-origin: center;
   }
   
   @keyframes mapPulse {
